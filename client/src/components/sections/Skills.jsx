@@ -1,97 +1,71 @@
-import { Code, Database, Palette, Server, Smartphone, Cloud } from 'lucide-react'
+import React from 'react';
+import { Code2, Server, Database, Palette, Cpu, Terminal, GitBranch, Shield } from 'lucide-react';
 
-export default function Skills() {
-  const skillCategories = [
-    {
-      icon: <Code className="text-blue-600" size={28} />,
-      title: 'Frontend',
-      skills: ['React.js', 'JavaScript', 'TypeScript', 'HTML5/CSS3', 'Tailwind CSS', 'Redux']
-    },
-    {
-      icon: <Server className="text-green-600" size={28} />,
-      title: 'Backend',
-      skills: ['Node.js', 'Express.js', 'Python', 'REST APIs', 'GraphQL', 'Microservices']
-    },
-    {
-      icon: <Database className="text-purple-600" size={28} />,
-      title: 'Database',
-      skills: ['MySQL', 'MongoDB', 'PostgreSQL', 'Redis', 'Firebase', 'Prisma']
-    },
-    {
-      icon: <Cloud className="text-orange-600" size={28} />,
-      title: 'DevOps & Tools',
-      skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Nginx', 'Linux']
-    },
-    {
-      icon: <Smartphone className="text-pink-600" size={28} />,
-      title: 'Mobile',
-      skills: ['React Native', 'PWA', 'Responsive Design', 'App Store Deployment']
-    },
-    {
-      icon: <Palette className="text-cyan-600" size={28} />,
-      title: 'Design',
-      skills: ['Figma', 'Adobe XD', 'UI/UX Principles', 'Prototyping', 'Wireframing']
-    }
-  ]
+const Skills = () => {
+  const skills = [
+    { name: 'React', icon: <Code2 />, level: 90, color: 'from-cyan-500 to-blue-500' },
+    { name: 'Node.js', icon: <Server />, level: 85, color: 'from-green-500 to-emerald-500' },
+    { name: 'Express.js', icon: <Terminal />, level: 80, color: 'from-gray-400 to-gray-600' },
+    { name: 'TailwindCSS', icon: <Palette />, level: 95, color: 'from-teal-400 to-cyan-500' },
+    { name: 'MongoDB', icon: <Database />, level: 75, color: 'from-green-400 to-green-600' },
+    { name: 'MySQL', icon: <Database />, level: 70, color: 'from-blue-400 to-blue-600' },
+    { name: 'C/C++', icon: <Cpu />, level: 85, color: 'from-purple-500 to-indigo-500' },
+    { name: 'Java/Python', icon: <Terminal />, level: 80, color: 'from-orange-500 to-red-500' },
+  ];
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full mb-6">
-            <Code size={18} className="mr-2" />
-            My Skills
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Expertise</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            I work with a wide range of technologies to build scalable and efficient solutions.
+    <section id="skills" className="py-20 relative">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-accent to-neon bg-clip-text text-transparent">
+              Tech Stack & Skills
+            </span>
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Technologies I work with to build amazing digital experiences
           </p>
         </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
-              <div className="flex items-center mb-6">
-                <div className="p-3 bg-gray-50 rounded-lg mr-4">
-                  {category.icon}
+        
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {skills.map((skill, index) => (
+            <div
+              key={index}
+              className="group relative glass-dark rounded-2xl p-6 border border-gray-800 hover:border-neon/50 transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+            >
+              {/* Icon */}
+              <div className="mb-4">
+                <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 group-hover:scale-110 transition-transform duration-300">
+                  <div className={`text-white`}>
+                    {React.cloneElement(skill.icon, { size: 28 })}
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold">{category.title}</h3>
               </div>
-
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, idx) => (
-                  <span 
-                    key={idx} 
-                    className="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-primary hover:text-white transition cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
+              
+              {/* Skill Name */}
+              <h3 className="font-semibold text-lg mb-3">{skill.name}</h3>
+              
+              {/* Progress Bar */}
+              <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div 
+                  className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out`}
+                  style={{ width: `${skill.level}%` }}
+                ></div>
               </div>
+              
+              {/* Level Indicator */}
+              <div className="absolute top-4 right-4 text-sm font-semibold text-neon">
+                {skill.level}%
+              </div>
+              
+              {/* Hover Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-neon/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
             </div>
           ))}
         </div>
-
-        {/* Experience Summary */}
-        <div className="mt-16 grid md:grid-cols-4 gap-6">
-          <div className="text-center bg-white p-6 rounded-xl shadow">
-            <div className="text-3xl font-bold text-primary mb-2">3+</div>
-            <div className="text-gray-600">Years Experience</div>
-          </div>
-          <div className="text-center bg-white p-6 rounded-xl shadow">
-            <div className="text-3xl font-bold text-primary mb-2">50+</div>
-            <div className="text-gray-600">Projects Completed</div>
-          </div>
-          <div className="text-center bg-white p-6 rounded-xl shadow">
-            <div className="text-3xl font-bold text-primary mb-2">30+</div>
-            <div className="text-gray-600">Happy Clients</div>
-          </div>
-          <div className="text-center bg-white p-6 rounded-xl shadow">
-            <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-            <div className="text-gray-600">Support Available</div>
-          </div>
-        </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Skills;

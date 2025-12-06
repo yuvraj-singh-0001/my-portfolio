@@ -1,104 +1,90 @@
-import { Github, Linkedin, Mail, Phone, MapPin, Heart } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Linkedin, Github, Mail, Phone, MapPin } from 'lucide-react';
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear()
-
-  const quickLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Contact', path: '/contact' },
-  ]
-
+const Footer = () => {
   const socialLinks = [
-    { icon: <Github size={20} />, href: 'https://github.com', label: 'GitHub' },
-    { icon: <Linkedin size={20} />, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: <Mail size={20} />, href: 'mailto:your.email@gmail.com', label: 'Email' },
-  ]
+    { icon: <Linkedin />, href: '#', label: 'LinkedIn' },
+    { icon: <Github />, href: '#', label: 'GitHub' },
+    { icon: <Mail />, href: 'mailto:your-email@gmail.com', label: 'Email' },
+  ];
+
+  const contactInfo = [
+    { icon: <Phone />, text: '+91 12345 67890' },
+    { icon: <Mail />, text: 'your-email@gmail.com' },
+    { icon: <MapPin />, text: 'India' },
+  ];
 
   return (
-    <footer className="bg-dark text-white">
-      <div className="container mx-auto px-4 sm:px-6 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Brand Info */}
+    <footer className="relative border-t border-gray-800/50">
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent"></div>
+      
+      <div className="container mx-auto px-6 py-12 relative z-10">
+        <div className="grid md:grid-cols-3 gap-12">
+          {/* Brand Section */}
           <div>
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                <Phone className="text-white" size={24} />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Yuvraj Singh</h3>
-                <p className="text-gray-300">Full Stack Developer</p>
-              </div>
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-2 h-10 bg-neon rounded-full animate-pulse"></div>
+              <h2 className="font-heading text-2xl font-bold">Yuvraj Singh</h2>
             </div>
-            <p className="text-gray-300 mb-4">
-              Building exceptional digital experiences with modern technologies.
+            <p className="text-gray-400 mb-6">
+              Full Stack Developer specializing in building exceptional digital experiences 
+              that are fast, secure, and scalable.
             </p>
             <div className="flex space-x-4">
-              {socialLinks.map((link, index) => (
+              {socialLinks.map((social, index) => (
                 <a
                   key={index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 bg-gray-800 rounded-lg hover:bg-primary transition"
-                  aria-label={link.label}
+                  href={social.href}
+                  className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:border-neon hover:bg-neon/10 hover:text-neon transition-all duration-300"
+                  aria-label={social.label}
                 >
-                  {link.icon}
+                  {social.icon}
                 </a>
               ))}
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-bold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-gray-300 hover:text-white transition flex items-center space-x-2"
-                  >
-                    <span>→</span>
-                    <span>{link.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
+          
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-bold mb-4">Contact Info</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center space-x-3">
-                <Phone className="text-primary" size={18} />
-                <span className="text-gray-300">+91 98765 43210</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Mail className="text-primary" size={18} />
-                <a href="mailto:your.email@gmail.com" className="text-gray-300 hover:text-white">
-                  your.email@gmail.com
+            <h3 className="text-xl font-bold mb-6">Contact Info</h3>
+            <div className="space-y-4">
+              {contactInfo.map((info, index) => (
+                <div key={index} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center">
+                    {info.icon}
+                  </div>
+                  <span>{info.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-xl font-bold mb-6">Quick Links</h3>
+            <div className="space-y-3">
+              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((link) => (
+                <a
+                  key={link}
+                  href={`#${link.toLowerCase()}`}
+                  className="block text-gray-400 hover:text-neon hover:translate-x-2 transition-all duration-300"
+                >
+                  {link}
                 </a>
-              </li>
-              <li className="flex items-center space-x-3">
-                <MapPin className="text-primary" size={18} />
-                <span className="text-gray-300">New Delhi, India</span>
-              </li>
-            </ul>
+              ))}
+            </div>
           </div>
         </div>
-
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>
-            © {currentYear} Yuvraj Singh. All rights reserved. Made with{' '}
-            <Heart size={16} className="inline text-red-500 animate-pulse" /> using React & Tailwind
-          </p>
-          <p className="mt-2 text-sm">Designed for hiring opportunities and collaborations</p>
+        
+        {/* Copyright */}
+        <div className="border-t border-gray-800/50 mt-12 pt-8 text-center text-gray-500">
+          <p>© {new Date().getFullYear()} Yuvraj Singh. All rights reserved.</p>
+          <p className="text-sm mt-2">Built with React, Tailwind CSS & Vite</p>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
+
+export default Footer;

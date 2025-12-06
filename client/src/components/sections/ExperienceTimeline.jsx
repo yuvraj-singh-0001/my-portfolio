@@ -1,70 +1,70 @@
-import { Briefcase, Calendar } from 'lucide-react'
+import React from 'react';
+import { Briefcase, Calendar, ExternalLink } from 'lucide-react';
 
-export default function ExperienceTimeline() {
+const ExperienceTimeline = () => {
   const experiences = [
     {
-      year: '2023 - Present',
-      company: 'Tech Solutions Inc.',
-      position: 'Senior Full Stack Developer',
-      description: 'Leading development of enterprise web applications using React and Node.js.',
-      skills: ['React', 'Node.js', 'AWS', 'MongoDB']
-    },
-    {
-      year: '2021 - 2023',
-      company: 'Digital Innovations',
-      position: 'Full Stack Developer',
-      description: 'Developed and maintained multiple client projects with agile methodology.',
-      skills: ['JavaScript', 'Express.js', 'MySQL', 'Docker']
-    },
-    {
-      year: '2020 - 2021',
-      company: 'Startup Studio',
-      position: 'Frontend Developer',
-      description: 'Built responsive user interfaces for various startup products.',
-      skills: ['React', 'TypeScript', 'Tailwind', 'Redux']
+      title: 'Full Stack Developer Intern',
+      company: 'creativestudio24.in',
+      period: '2023 - Present',
+      description: 'Working on modern web applications using React, Node.js, and MongoDB. Contributing to client projects and implementing responsive designs.',
+      skills: ['React', 'Node.js', 'MongoDB', 'Tailwind', 'REST APIs'],
+      link: 'https://creativestudio24.in'
     }
-  ]
+  ];
 
   return (
-    <div className="relative">
-      {/* Timeline line */}
-      <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-primary to-secondary"></div>
-
-      <div className="space-y-12">
-        {experiences.map((exp, index) => (
-          <div 
-            key={index} 
-            className={`relative flex flex-col md:flex-row items-center ${
-              index % 2 === 0 ? 'md:flex-row-reverse' : ''
-            }`}
-          >
-            {/* Timeline dot */}
-            <div className="absolute md:relative left-6 md:left-auto md:w-1/2 flex justify-center mb-4 md:mb-0">
-              <div className="w-4 h-4 bg-primary rounded-full border-4 border-white shadow-lg"></div>
-            </div>
-
-            {/* Content */}
-            <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <div className="flex items-center mb-4">
-                  <Briefcase className="text-primary mr-3" size={20} />
-                  <h3 className="text-xl font-bold">{exp.position}</h3>
+    <section id="experience" className="py-20 relative">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="font-poppins text-4xl md:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-accent to-neon-500 bg-clip-text text-transparent">
+              Experience
+            </span>
+          </h2>
+        </div>
+        
+        <div className="max-w-4xl mx-auto">
+          {experiences.map((exp, index) => (
+            <div key={index} className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-neon-500 to-accent"></div>
+              
+              <div className="relative glass-dark rounded-2xl p-8 ml-16 mb-8 border border-gray-800 hover:border-neon-500/50 transition-all duration-300">
+                <div className="absolute -left-16 top-8">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center">
+                    <Briefcase className="text-neon-500" size={24} />
+                  </div>
                 </div>
                 
-                <div className="flex items-center text-gray-500 mb-3">
-                  <Calendar size={16} className="mr-2" />
-                  <span className="font-medium">{exp.year}</span>
-                  <span className="mx-2">•</span>
-                  <span className="text-primary font-semibold">{exp.company}</span>
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-1">{exp.title}</h3>
+                    <div className="flex items-center space-x-2 text-neon-500 mb-2">
+                      <span>{exp.company}</span>
+                      {exp.link && (
+                        <a href={exp.link} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+                          <ExternalLink size={16} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2 text-gray-400 mt-2 md:mt-0">
+                    <Calendar size={16} />
+                    <span>{exp.period}</span>
+                  </div>
                 </div>
-
-                <p className="text-gray-600 mb-4">{exp.description}</p>
-
+                
+                <p className="text-gray-300 mb-6">
+                  {exp.description}
+                </p>
+                
                 <div className="flex flex-wrap gap-2">
                   {exp.skills.map((skill, skillIndex) => (
-                    <span 
-                      key={skillIndex} 
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                    <span
+                      key={skillIndex}
+                      className="px-3 py-1 rounded-full bg-gray-800/50 border border-gray-700 text-sm"
                     >
                       {skill}
                     </span>
@@ -72,9 +72,11 @@ export default function ExperienceTimeline() {
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  )
-}
+    </section>
+  );
+};
+
+export default ExperienceTimeline;

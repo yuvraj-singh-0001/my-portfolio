@@ -1,59 +1,52 @@
-import { useState } from 'react'
-import { Menu, X, Home, User, Briefcase, Mail, Phone } from 'lucide-react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Menu, X, Home, User, Briefcase, Mail, Code2 } from 'lucide-react';
 
-export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', path: '/', icon: <Home size={18} /> },
-    { name: 'About', path: '/about', icon: <User size={18} /> },
-    { name: 'Projects', path: '/projects', icon: <Briefcase size={18} /> },
-    { name: 'Contact', path: '/contact', icon: <Mail size={18} /> },
-  ]
+    { name: 'Home', icon: <Home size={20} />, href: '#home' },
+    { name: 'About', icon: <User size={20} />, href: '#about' },
+    { name: 'Skills', icon: <Code2 size={20} />, href: '#skills' },
+    { name: 'Projects', icon: <Briefcase size={20} />, href: '#projects' },
+    { name: 'Contact', icon: <Mail size={20} />, href: '#contact' },
+  ];
 
   return (
-    <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm border-b">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center h-16">
+    <header className="fixed top-0 w-full z-40 glass-dark border-b border-gray-800/50">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <Phone className="text-white" size={20} />
-            </div>
-            <span className="text-xl font-bold text-dark">Portfolio</span>
-          </NavLink>
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-8 bg-neon-500 rounded-full animate-pulse"></div>
+            <h1 className="font-poppins text-2xl font-bold bg-gradient-to-r from-accent to-neon-500 bg-clip-text text-transparent">
+              Yuvraj Singh
+            </h1>
+          </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <NavLink
+              <a
                 key={item.name}
-                to={item.path}
-                className={({ isActive }) =>
-                  `flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${
-                    isActive
-                      ? 'bg-primary text-white'
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-primary'
-                  }`
-                }
+                href={item.href}
+                className="group flex items-center space-x-2 text-gray-300 hover:text-neon-500 transition-colors duration-300"
               >
                 {item.icon}
-                <span className="font-medium">{item.name}</span>
-              </NavLink>
+                <span className="relative">
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-500 group-hover:w-full transition-all duration-300"></span>
+                </span>
+              </a>
             ))}
-            <a
-              href="tel:+919876543210"
-              className="ml-4 flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
-            >
-              <Phone size={18} />
-              <span className="font-medium">Call Now</span>
-            </a>
+            <button className="px-6 py-2 bg-gradient-to-r from-accent to-secondary rounded-xl font-semibold hover:from-neon-500 hover:to-accent transition-all duration-300 shadow-lg hover:shadow-neon-500/20">
+              Hire Me
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-600 p-2 rounded-lg hover:bg-gray-100"
+            className="md:hidden p-2 rounded-lg border border-gray-700 hover:border-neon-500 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -62,37 +55,25 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t animate-fade-in">
-            <div className="space-y-2">
+          <div className="md:hidden mt-4 pb-4">
+            <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <NavLink
+                <a
                   key={item.name}
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `flex items-center space-x-3 px-4 py-3 rounded-lg ${
-                      isActive
-                        ? 'bg-primary text-white'
-                        : 'text-gray-600 hover:bg-gray-100'
-                    }`
-                  }
+                  href={item.href}
+                  className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-800/50 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.icon}
-                  <span className="font-medium">{item.name}</span>
-                </NavLink>
+                  <span>{item.name}</span>
+                </a>
               ))}
-              <a
-                href="tel:+919876543210"
-                className="flex items-center space-x-3 px-4 py-3 bg-green-600 text-white rounded-lg"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Phone size={18} />
-                <span className="font-medium">Call Now</span>
-              </a>
             </div>
-          </nav>
+          </div>
         )}
       </div>
     </header>
-  )
-}
+  );
+};
+
+export default Header;

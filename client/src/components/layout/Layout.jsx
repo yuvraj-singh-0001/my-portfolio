@@ -1,37 +1,23 @@
-import Header from '../../components/layout/Header'
-import Footer from '../../components/layout/Footer'
-import { Toaster } from 'react-hot-toast'
+import React from 'react';
+import Header from './Header';
+import Footer from './Footer';
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-grow pt-16">{children}</main>
+      <main className="flex-grow">
+        {children}
+      </main>
       <Footer />
-      <Toaster 
-        position="top-right"
-        toastOptions={{
-          duration: 4000,
-          style: {
-            background: '#363636',
-            color: '#fff',
-          },
-          success: {
-            duration: 3000,
-            iconTheme: {
-              primary: '#10B981',
-              secondary: '#fff',
-            },
-          },
-          error: {
-            duration: 4000,
-            iconTheme: {
-              primary: '#EF4444',
-              secondary: '#fff',
-            },
-          },
-        }}
-      />
+      
+      {/* Floating CTA Button */}
+      <button className="floating-cta group px-6 py-3 bg-gradient-to-r from-accent to-secondary rounded-full font-semibold flex items-center space-x-2 shadow-lg animate-pulse-glow hover:animate-none hover:from-neon-500 hover:to-accent transition-all duration-300">
+        <span>Hire Me</span>
+        <div className="w-2 h-2 bg-neon-500 rounded-full group-hover:animate-ping"></div>
+      </button>
     </div>
-  )
-}
+  );
+};
+
+export default Layout;

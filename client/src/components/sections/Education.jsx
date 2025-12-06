@@ -1,74 +1,66 @@
-import { GraduationCap, Award } from 'lucide-react'
+import React from 'react';
+import { GraduationCap, Calendar, MapPin } from 'lucide-react';
 
-export default function Education() {
-  const education = [
-    {
-      degree: 'Bachelor of Technology',
-      field: 'Computer Science & Engineering',
-      institution: 'Delhi Technological University',
-      year: '2016 - 2020',
-      grade: '8.5 CGPA',
-      achievements: ['University Topper', 'Hackathon Winner']
-    },
-    {
-      degree: 'Full Stack Development',
-      field: 'MERN Stack Specialization',
-      institution: 'Coding Academy',
-      year: '2020',
-      grade: 'Certified',
-      achievements: ['Top 5% of Batch', 'Capstone Project Excellence']
-    }
-  ]
-
+const Education = () => {
   return (
-    <div className="grid md:grid-cols-2 gap-8">
-      {education.map((edu, index) => (
-        <div key={index} className="bg-white rounded-xl shadow-lg p-6 border">
-          <div className="flex items-start mb-4">
-            <div className="p-3 bg-blue-100 rounded-lg mr-4">
-              <GraduationCap className="text-blue-600" size={24} />
-            </div>
-            <div>
-              <h3 className="text-xl font-bold">{edu.degree}</h3>
-              <p className="text-primary font-medium">{edu.field}</p>
-            </div>
-          </div>
-
-          <div className="space-y-3 mb-4">
-            <div>
-              <p className="text-sm text-gray-500">Institution</p>
-              <p className="font-medium">{edu.institution}</p>
-            </div>
-            <div className="flex justify-between">
-              <div>
-                <p className="text-sm text-gray-500">Year</p>
-                <p className="font-medium">{edu.year}</p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500">Grade</p>
-                <p className="font-medium text-primary">{edu.grade}</p>
-              </div>
-            </div>
-          </div>
-
-          {edu.achievements.length > 0 && (
-            <div>
-              <div className="flex items-center mb-2">
-                <Award className="text-yellow-500 mr-2" size={18} />
-                <p className="font-medium">Achievements</p>
-              </div>
-              <ul className="space-y-1">
-                {edu.achievements.map((achievement, idx) => (
-                  <li key={idx} className="text-sm text-gray-600 flex items-center">
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full mr-2"></span>
-                    {achievement}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+    <section id="education" className="py-20 relative">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="font-poppins text-4xl md:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-accent to-neon-500 bg-clip-text text-transparent">
+              Education
+            </span>
+          </h2>
         </div>
-      ))}
-    </div>
-  )
-}
+        
+        <div className="max-w-3xl mx-auto glass-dark rounded-2xl p-8">
+          <div className="flex items-start space-x-6">
+            <div className="p-4 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-xl">
+              <GraduationCap size={32} className="text-neon-500" />
+            </div>
+            
+            <div className="flex-1">
+              <h3 className="text-2xl font-bold mb-2">Bachelor of Computer Applications (BCA)</h3>
+              <p className="text-gray-300 mb-4">Final Year Student</p>
+              
+              <div className="flex flex-wrap gap-4 text-gray-400 mb-6">
+                <div className="flex items-center space-x-2">
+                  <Calendar size={16} />
+                  <span>2022 - Present</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MapPin size={16} />
+                  <span>India</span>
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <h4 className="font-semibold text-neon-500">Key Focus Areas:</h4>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <li className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-neon-500 rounded-full"></div>
+                    <span>Data Structures & Algorithms</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-neon-500 rounded-full"></div>
+                    <span>Database Management Systems</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-neon-500 rounded-full"></div>
+                    <span>Web Development</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-neon-500 rounded-full"></div>
+                    <span>Software Engineering</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Education;

@@ -1,54 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
+  body {
+    @apply bg-primary text-white font-inter;
   }
   
-  body {
-    @apply antialiased text-gray-800;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Text selection */
+  ::selection {
+    background-color: rgba(0, 229, 255, 0.3);
+    color: white;
+  }
+  
+  ::-moz-selection {
+    background-color: rgba(0, 229, 255, 0.3);
+    color: white;
+  }
+  
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid rgba(0, 229, 255, 0.5);
+    outline-offset: 2px;
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 shadow-lg hover:shadow-xl;
+  .glass-dark {
+    @apply bg-black/30 backdrop-blur-lg border border-gray-800/50;
   }
   
-  .btn-secondary {
-    @apply bg-white text-primary border-2 border-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all duration-300;
+  .neon-border {
+    border: 2px solid transparent;
+    background: linear-gradient(#0A0A0B, #0A0A0B) padding-box,
+                linear-gradient(135deg, #00E5FF, #1A73E8) border-box;
   }
   
-  .section-padding {
-    @apply py-12 md:py-24;
+  .floating-cta {
+    @apply fixed z-50 bottom-8 right-8 animate-float;
   }
 }
 
-/* Custom Animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Scrollbar Styling */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+  background: #0A0A0B;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary rounded-full;
+  background: #1A73E8;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-secondary;
+  background: #00E5FF;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
