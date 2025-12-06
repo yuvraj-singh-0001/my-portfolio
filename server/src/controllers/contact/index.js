@@ -1,5 +1,5 @@
 const express = require('express');
-import { submitContact } from '../controllers/contact/index.js';
+const { submitContact } = require('../../api/contact');
 const router = express.Router();
 
 router.post('/submit', submitContact);

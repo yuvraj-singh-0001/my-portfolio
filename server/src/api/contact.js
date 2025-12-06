@@ -1,15 +1,6 @@
 const db = require('../config/db');
 const nodemailer = require('nodemailer');
 
-// Configure Nodemailer for Gmail
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD // Use App Password, not regular password
-    }
-});
-
 exports.submitContact = async (req, res) => {
     try {
         const { name, email, subject, message } = req.body;
