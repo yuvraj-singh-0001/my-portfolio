@@ -6,10 +6,10 @@ const Skills = () => {
     { name: 'React', icon: <Code2 />, level: 90, color: 'from-cyan-500 to-blue-500' },
     { name: 'Node.js', icon: <Server />, level: 85, color: 'from-green-500 to-emerald-500' },
     { name: 'Express.js', icon: <Terminal />, level: 80, color: 'from-gray-400 to-gray-600' },
-    { name: 'TailwindCSS', icon: <Palette />, level: 95, color: 'from-teal-400 to-cyan-500' },
+    { name: 'TailwindCSS', icon: <Palette />, level: 90, color: 'from-teal-400 to-cyan-500' },
     { name: 'MongoDB', icon: <Database />, level: 75, color: 'from-green-400 to-green-600' },
-    { name: 'MySQL', icon: <Database />, level: 70, color: 'from-blue-400 to-blue-600' },
-    { name: 'C/C++', icon: <Cpu />, level: 85, color: 'from-purple-500 to-indigo-500' },
+    { name: 'MySQL', icon: <Database />, level: 80, color: 'from-blue-400 to-blue-600' },
+    { name: 'C/C++', icon: <Cpu />, level: 90, color: 'from-purple-500 to-indigo-500' },
     { name: 'Java/Python', icon: <Terminal />, level: 80, color: 'from-orange-500 to-red-500' },
   ];
 

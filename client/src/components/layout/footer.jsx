@@ -3,15 +3,15 @@ import { Linkedin, Github, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const socialLinks = [
-    { icon: <Linkedin />, href: '#', label: 'LinkedIn' },
-    { icon: <Github />, href: '#', label: 'GitHub' },
-    { icon: <Mail />, href: 'mailto:your-email@gmail.com', label: 'Email' },
+    { icon: <Linkedin />, href: '', label: 'LinkedIn'},
+    { icon: <Github />, href: '', label: 'GitHub'},
+    { icon: <Mail />, href: 'mailto:singhyuvraj8420@gmail.com', label: 'Email'},
   ];
 
   const contactInfo = [
-    { icon: <Phone />, text: '+91 12345 67890' },
-    { icon: <Mail />, text: 'your-email@gmail.com' },
-    { icon: <MapPin />, text: 'India' },
+    { icon: <Phone />, text: '+91 86013 00910'},
+    { icon: <Mail />, text: 'singhyuvraj8420@gmail.com'},
+    { icon: <MapPin />, text: 'India ,Noida '},
   ];
 
   return (
