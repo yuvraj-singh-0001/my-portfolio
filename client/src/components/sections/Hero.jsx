@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, ChevronDown, Download, Mail, Code, Server, Database } from 'lucide-react';
 import YuvrajImage from '../../assets/images/Yuvraj-singh-portimage.png';
+import ResumePdf from '../../assets/resume-cv/Yuvraj_Singh_Resume 1.pdf';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
@@ -45,9 +46,11 @@ const Hero = () => {
 
   const downloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/cv-yuvraj-singh.pdf';
+    link.href = ResumePdf;
     link.download = 'Yuvraj_Singh_CV.pdf';
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -219,12 +222,7 @@ const Hero = () => {
                 </div>
 
                 {/* Tech Stack Badges */}
-                <div className="absolute -top-4 -left-4 animate-bounce-slow hidden sm:block">
-                  <div className="glass-dark px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-neon-500/20 flex items-center space-x-2 shadow-lg">
-                    <Code className="text-neon-500" size={16} />
-                    <span className="text-xs sm:text-sm font-semibold text-white">React</span>
-                  </div>
-                </div>
+                
 
                 <div
                   className="absolute -bottom-4 -right-4 animate-bounce-slow hidden sm:block"
@@ -240,10 +238,7 @@ const Hero = () => {
                   className="absolute top-1/2 -left-6 animate-bounce-slow hidden lg:block"
                   style={{ animationDelay: '1s' }}
                 >
-                  <div className="glass-dark px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-secondary/20 flex items-center space-x-2 shadow-lg">
-                    <Database className="text-secondary" size={16} />
-                    <span className="text-xs sm:text-sm font-semibold text-white">MongoDB</span>
-                  </div>
+                  
                 </div>
               </div>
 

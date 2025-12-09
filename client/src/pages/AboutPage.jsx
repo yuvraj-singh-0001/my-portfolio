@@ -1,12 +1,16 @@
 import React from 'react';
 import { User, Download } from 'lucide-react';
+import YuvrajImage from '../assets/images/Yuvraj-singh-about-image.png';
+import ResumePdf from '../assets/resume-cv/Yuvraj_Singh_Resume 1.pdf';
 
 const About = () => {
   const downloadResume = () => {
     const link = document.createElement('a');
-    link.href = '/cv-yuvraj-singh.pdf';
+    link.href = ResumePdf;
     link.download = 'Yuvraj_Singh_Resume.pdf';
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -54,7 +58,7 @@ const About = () => {
                   {/* Perfect square for professional photo */}
                   <div className="aspect-square w-full flex items-center justify-center">
                     <img
-                      src="/images/yuvraj-profile.png"
+                      src={YuvrajImage}
                       alt="Yuvraj Singh - Full Stack Developer"
                       className="w-full h-full object-cover"
                     />
