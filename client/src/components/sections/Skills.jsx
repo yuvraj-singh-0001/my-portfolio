@@ -14,52 +14,51 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 relative">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6">
+    <section id="skills" className="py-8 relative">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-10">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">
             <span className="bg-gradient-to-r from-accent to-neon bg-clip-text text-transparent">
               Tech Stack & Skills
             </span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base max-w-2xl mx-auto">
             Technologies I work with to build amazing digital experiences
           </p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="group relative glass-dark rounded-2xl p-6 border border-gray-800 hover:border-neon/50 transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+              className="group relative rounded-xl p-5 border border-gray-800 hover:border-neon/30 transition-all duration-300 cursor-pointer bg-gray-900/30 backdrop-blur-sm"
             >
-              {/* Icon */}
-              <div className="mb-4">
-                <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 group-hover:scale-110 transition-transform duration-300">
-                  <div className={`text-white`}>
-                    {React.cloneElement(skill.icon, { size: 28 })}
+              {/* Skill Header with Icon and Name */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="inline-flex p-2.5 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-white">
+                    {React.cloneElement(skill.icon, { size: 22 })}
                   </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-base">{skill.name}</h3>
+                  <div className="text-sm text-neon font-medium">{skill.level}%</div>
                 </div>
               </div>
               
-              {/* Skill Name */}
-              <h3 className="font-semibold text-lg mb-3">{skill.name}</h3>
-              
-              {/* Progress Bar */}
-              <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
-                <div 
-                  className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out`}
-                  style={{ width: `${skill.level}%` }}
-                ></div>
+              {/* Progress Bar - Modern Style */}
+              <div className="relative">
+                <div className="w-full h-2 bg-gray-800/50 rounded-full overflow-hidden">
+                  <div 
+                    className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-700 ease-out`}
+                    style={{ width: `${skill.level}%` }}
+                  ></div>
+                </div>
+                {/* Removed progress dots */}
               </div>
               
-              {/* Level Indicator */}
-              <div className="absolute top-4 right-4 text-sm font-semibold text-neon">
-                {skill.level}%
-              </div>
-              
-              {/* Hover Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-neon/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+              {/* Hover Effect - Subtle Glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-neon/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl -z-10"></div>
             </div>
           ))}
         </div>

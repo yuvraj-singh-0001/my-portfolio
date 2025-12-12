@@ -3,8 +3,8 @@ import { Linkedin, Github, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const socialLinks = [
-    { icon: <Linkedin />, href: '', label: 'LinkedIn'},
-    { icon: <Github />, href: '', label: 'GitHub'},
+    { icon: <Linkedin />, href: 'https://www.linkedin.com/in/yuvraj-singh-001e/', label: 'LinkedIn'},
+    { icon: <Github />, href: 'https://github.com/yuvraj-singh-0001', label: 'GitHub'},
     { icon: <Mail />, href: 'mailto:singhyuvraj8420@gmail.com', label: 'Email'},
   ];
 
