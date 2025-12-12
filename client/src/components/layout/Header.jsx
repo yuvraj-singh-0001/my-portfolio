@@ -12,6 +12,20 @@ const Header = () => {
     { name: 'Contact', icon: <Mail size={20} />, href: '#contact' },
   ];
 
+  // Function to handle Hire Me click
+  const handleHireMeClick = () => {
+    // Scroll to contact section
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // On mobile, close menu if open
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    }
+  };
+
   return (
     <header className="fixed top-0 w-full z-40 glass-dark border-b border-gray-800/50">
       <div className="container mx-auto px-6 py-4">
@@ -31,6 +45,13 @@ const Header = () => {
                 key={item.name}
                 href={item.href}
                 className="group flex items-center space-x-2 text-gray-300 hover:text-neon-500 transition-colors duration-300"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const section = document.querySelector(item.href);
+                  if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 {item.icon}
                 <span className="relative">
@@ -39,7 +60,10 @@ const Header = () => {
                 </span>
               </a>
             ))}
-            <button className="px-6 py-2 bg-gradient-to-r from-accent to-secondary rounded-xl font-semibold hover:from-neon-500 hover:to-accent transition-all duration-300 shadow-lg hover:shadow-neon-500/20">
+            <button 
+              onClick={handleHireMeClick}
+              className="px-6 py-2 bg-gradient-to-r from-accent to-secondary rounded-xl font-semibold hover:from-neon-500 hover:to-accent transition-all duration-300 shadow-lg hover:shadow-neon-500/20"
+            >
               Hire Me
             </button>
           </nav>
@@ -62,12 +86,26 @@ const Header = () => {
                   key={item.name}
                   href={item.href}
                   className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-800/50 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const section = document.querySelector(item.href);
+                    if (section) {
+                      section.scrollIntoView({ behavior: 'smooth' });
+                      setIsMenuOpen(false);
+                    }
+                  }}
                 >
                   {item.icon}
                   <span>{item.name}</span>
                 </a>
               ))}
+              {/* Mobile Hire Me Button */}
+              <button 
+                onClick={handleHireMeClick}
+                className="w-full py-3 bg-gradient-to-r from-accent to-secondary rounded-xl font-semibold hover:from-neon-500 hover:to-accent transition-all duration-300 shadow-lg hover:shadow-neon-500/20 mt-2"
+              >
+                Hire Me
+              </button>
             </div>
           </div>
         )}

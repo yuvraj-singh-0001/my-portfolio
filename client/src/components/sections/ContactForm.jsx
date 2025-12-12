@@ -122,7 +122,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-12 relative">
+    <section id="contact" className="py-2 relative">
       <div className="container mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-8">
@@ -236,7 +236,7 @@ const ContactForm = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-3 py-2.5 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon transition-all duration-300 placeholder-gray-500 text-sm"
-                      placeholder="you@example.com"
+                      placeholder="you@gmail.com"
                     />
                   </div>
                 </div>
@@ -255,7 +255,7 @@ const ContactForm = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-3 py-2.5 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon transition-all duration-300 placeholder-gray-500 text-sm"
-                      placeholder="+91 12345 67890"
+                      placeholder="+91 86013 00910"
                     />
                   </div>
                   
@@ -291,7 +291,7 @@ const ContactForm = () => {
                     required
                     rows="4"
                     className="w-full px-3 py-2.5 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon transition-all duration-300 resize-none placeholder-gray-500 text-sm"
-                    placeholder="Tell me about your project..."
+                    placeholder="Tell me about project and job requirements..."
                   ></textarea>
                 </div>
                 

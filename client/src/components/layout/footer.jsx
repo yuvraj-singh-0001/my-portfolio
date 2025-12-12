@@ -3,22 +3,22 @@ import { Linkedin, Github, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const socialLinks = [
-    { icon: <Linkedin />, href: 'https://www.linkedin.com/in/yuvraj-singh-001e/', label: 'LinkedIn'},
-    { icon: <Github />, href: 'https://github.com/yuvraj-singh-0001', label: 'GitHub'},
-    { icon: <Mail />, href: 'mailto:singhyuvraj8420@gmail.com', label: 'Email'},
+    { icon: <Linkedin />, href: 'https://www.linkedin.com/in/yuvraj-singh-001e/', label: 'LinkedIn' },
+    { icon: <Github />, href: 'https://github.com/yuvraj-singh-0001', label: 'GitHub' },
+    { icon: <Mail />, href: 'mailto:singhyuvraj8420@gmail.com', label: 'Email' },
   ];
 
   const contactInfo = [
-    { icon: <Phone />, text: '+91 86013 00910'},
-    { icon: <Mail />, text: 'singhyuvraj8420@gmail.com'},
-    { icon: <MapPin />, text: 'India ,Noida '},
+    { icon: <Phone />, text: '+91 86013 00910' },
+    { icon: <Mail />, text: 'singhyuvraj8420@gmail.com' },
+    { icon: <MapPin />, text: 'India ,Noida ' },
   ];
 
   return (
     <footer className="relative border-t border-gray-800/50">
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent"></div>
-      
+
       <div className="container mx-auto px-6 py-12 relative z-10">
         <div className="grid md:grid-cols-3 gap-12">
           {/* Brand Section */}
@@ -28,8 +28,9 @@ const Footer = () => {
               <h2 className="font-heading text-2xl font-bold">Yuvraj Singh</h2>
             </div>
             <p className="text-gray-400 mb-6">
-              Full Stack Developer specializing in building exceptional digital experiences 
+              Full Stack Developer specializing in building exceptional digital experiences
               that are fast, secure, and scalable.
+              <p><span className="text-xs text-gray-300">Available for opportunities</span></p>
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -44,7 +45,7 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          
+
           {/* Contact Info */}
           <div>
             <h3 className="text-xl font-bold mb-6">Contact Info</h3>
@@ -59,7 +60,7 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          
+
           {/* Quick Links */}
           <div>
             <h3 className="text-xl font-bold mb-6">Quick Links</h3>
@@ -76,11 +77,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Copyright */}
         <div className="border-t border-gray-800/50 mt-12 pt-8 text-center text-gray-500">
           <p>© {new Date().getFullYear()} Yuvraj Singh. All rights reserved.</p>
-          <p className="text-sm mt-2">Built with React, Tailwind CSS & Vite</p>
+
+
         </div>
       </div>
     </footer>
@@ -88,3 +90,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
