@@ -30,8 +30,10 @@ const Footer = () => {
             <p className="text-gray-400 mb-6">
               Full Stack Developer specializing in building exceptional digital experiences
               that are fast, secure, and scalable.
-              <p><span className="text-xs text-gray-300">Available for opportunities</span></p>
             </p>
+            <div>
+              <p>Available for opportunities</p>
+            </div>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <a

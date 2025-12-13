@@ -1,7 +1,8 @@
-const express = require('express');
-const { submitContact } = require('../../api/contact');
+const express = require("express");
+const createContactMessage = require("../../api/contact");
+
 const router = express.Router();
 
-router.post('/submit', submitContact);
+router.post("/contact", createContactMessage);
 
 module.exports = router;
