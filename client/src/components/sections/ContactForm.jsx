@@ -59,16 +59,14 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  /* ===============================
-     REAL API SUBMIT (FIXED) - SAME AS ORIGINAL
-  ================================ */
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError("");
 
     try {
-      // यही original API call है जो आपके पास working था
+
       const response = await fetch("http://localhost:5100/api/contact/contact", {
         method: "POST",
         headers: {
@@ -104,7 +102,7 @@ const ContactForm = () => {
   return (
     <section id="contact" className="py-2 relative">
       <div className="container mx-auto px-4">
-        {/* Header Section - Second Code के जैसा */}
+
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold mb-2">
             <span className="bg-gradient-to-r from-accent to-neon bg-clip-text text-transparent">
@@ -116,7 +114,7 @@ const ContactForm = () => {
           </p>
         </div>
 
-        {/* Success/Error Messages - Second Code के जैसा */}
+
         {isSuccess && (
           <div className="mb-6 p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-xl flex items-start space-x-3">
             <CheckCircle className="text-green-500 flex-shrink-0" size={20} />
@@ -140,12 +138,12 @@ const ContactForm = () => {
         )}
 
         <div className="grid md:grid-cols-3 gap-6">
-          {/* Left Column - Contact Information - Second Code के जैसा */}
+
           <div className="md:col-span-1">
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`p-4 rounded-xl border border-gray-800 hover:border-neon/30 transition-all duration-300 ${info.color}`}
                 >
                   <div className="flex items-center gap-3 mb-2">
@@ -155,8 +153,8 @@ const ContactForm = () => {
                     <h3 className="font-semibold text-base">{info.title}</h3>
                   </div>
                   {info.link ? (
-                    <a 
-                      href={info.link} 
+                    <a
+                      href={info.link}
                       className="text-gray-300 hover:text-white transition-colors text-sm block"
                     >
                       {info.value}
@@ -167,8 +165,8 @@ const ContactForm = () => {
                 </div>
               ))}
             </div>
-            
-            {/* Quick Info - Second Code से लिया */}
+
+
             <div className="mt-6 p-4 bg-gray-900/30 rounded-xl border border-gray-800">
               <p className="text-gray-400 text-xs mb-2">Quick Response:</p>
               <div className="flex items-center gap-2">
@@ -177,13 +175,13 @@ const ContactForm = () => {
               </div>
             </div>
           </div>
-          
-          {/* Right Column - Contact Form - Second Code के जैसा लेकिन original API के साथ */}
+
+
           <div className="md:col-span-2 p-6 rounded-xl border border-gray-800 bg-gray-900/30">
             <h3 className="text-lg font-semibold mb-6">Send me a message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Name and Email Row - Grid layout वाला */}
+
               <div className="grid md:grid-cols-2 gap-4">
                 {/* Name Field */}
                 <div className="space-y-2">
@@ -201,7 +199,7 @@ const ContactForm = () => {
                     placeholder="Your name"
                   />
                 </div>
-                
+
                 {/* Email Field */}
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-gray-300 text-sm">
@@ -219,8 +217,8 @@ const ContactForm = () => {
                   />
                 </div>
               </div>
-              
-              {/* Phone and Subject Row - Grid layout वाला */}
+
+
               <div className="grid md:grid-cols-2 gap-4">
                 {/* Phone Field */}
                 <div className="space-y-2">
@@ -237,7 +235,7 @@ const ContactForm = () => {
                     placeholder="+91 86013 00910"
                   />
                 </div>
-                
+
                 {/* Subject Field */}
                 <div className="space-y-2">
                   <label className="text-gray-300 text-sm">Subject *</label>
@@ -256,7 +254,7 @@ const ContactForm = () => {
                   </select>
                 </div>
               </div>
-              
+
               {/* Message Field */}
               <div className="space-y-2">
                 <label className="flex items-center gap-2 text-gray-300 text-sm">
@@ -273,16 +271,15 @@ const ContactForm = () => {
                   placeholder="Tell me about project and job requirements..."
                 ></textarea>
               </div>
-              
-              {/* Submit Button - Original Code वाला लेकिन second code के styling के साथ */}
+
+
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300 text-sm ${
-                  isSubmitting
+                className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300 text-sm ${isSubmitting
                     ? 'bg-gray-700 cursor-not-allowed'
                     : 'bg-gradient-to-r from-accent to-neon hover:opacity-90'
-                }`}
+                  }`}
               >
                 {isSubmitting ? (
                   <>
@@ -297,8 +294,8 @@ const ContactForm = () => {
                 )}
               </button>
             </form>
-            
-            {/* Form Note - Second Code से लिया */}
+
+
             <div className="mt-4 pt-4 border-t border-gray-800/50">
               <p className="text-gray-500 text-xs text-center">
                 Your information is secure and will only be used to respond to your inquiry.
