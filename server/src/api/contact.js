@@ -1,42 +1,45 @@
 const pool = require("../config/db");
+const { sendContactNotification } = require("../utils/mailer");
 
-const createContactMessage = async (req, res) => {
+async function createContactMessage(req, res) {
   try {
     const { name, email, phone, subject, message } = req.body;
 
-    if (!name || !email || !subject || !message) {
+    if (!name || !email || !message) {
       return res.status(400).json({
         success: false,
         message: "Required fields missing"
       });
     }
 
-    const sql = `
-      INSERT INTO contacts
-      (name, email, phone, subject, message, is_read)
-      VALUES (?, ?, ?, ?, ?, 0)
-    `;
+    // 1️⃣ Save to DB
+    await pool.execute(
+      `INSERT INTO contact_messages (name, email, phone, subject, message)
+       VALUES (?, ?, ?, ?, ?)`,
+      [name, email, phone, subject, message]
+    );
 
-    await pool.execute(sql, [
+    // 2️⃣ Send Gmail notification
+    await sendContactNotification({
       name,
       email,
-      phone || null,
+      phone,
       subject,
       message
-    ]);
-
-    return res.status(201).json({
-      success: true,
-      message: "Message saved successfully"
     });
 
-  } catch (err) {
-    console.error("DB ERROR:", err);
+    return res.json({
+      success: true,
+      message: "Message stored and email notification sent"
+    });
+
+  } catch (error) {
+    console.error("Contact API error:", error);
     return res.status(500).json({
       success: false,
-      message: "Database error"
+      message: "Server error"
     });
   }
-};
+}
 
 module.exports = createContactMessage;
