@@ -8,24 +8,24 @@ const Projects = () => {
       description: 'A comprehensive surveillance management system with real-time monitoring and analytics dashboard.',
       tech: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
       imageColor: 'from-blue-500/20 to-cyan-500/20',
-      liveLink: '#',
-      githubLink: '#'
+      liveLink: 'https://github.com/yuvraj-singh-0001/cctv',
+      githubLink: 'https://github.com/yuvraj-singh-0001/cctv'
     },
     {
       title: 'Personal Portfolio',
       description: 'Modern portfolio website with dark theme, animations, and email notification system.',
       tech: ['React', 'Tailwind', 'EmailJS', 'Vite'],
       imageColor: 'from-purple-500/20 to-pink-500/20',
-      liveLink: '#',
-      githubLink: '#'
+      liveLink: 'https://github.com/yuvraj-singh-0001/my-portfolio',
+      githubLink: 'https://github.com/yuvraj-singh-0001/my-portfolio'
     },
     {
-      title: 'Code Compiler',
-      description: 'Online code compiler supporting multiple languages with real-time output and syntax highlighting.',
+      title: 'Wheel of Names',
+      description: 'An interactive wheel app that randomly selects names, built as my first web project using HTML, CSS, and JavaScript.',
       tech: ['Node.js', 'Express', 'Docker', 'Redis'],
       imageColor: 'from-green-500/20 to-emerald-500/20',
-      liveLink: '#',
-      githubLink: '#'
+      liveLink: 'https://yuvraj-singh-0001.github.io/',
+      githubLink: 'https://github.com/yuvraj-singh-0001/yuvraj-singh-0001.github.io'
     },
   ];
 
