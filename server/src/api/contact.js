@@ -1,5 +1,6 @@
 const pool = require("../config/db");
-const { sendContactNotification } = require("../utils/mailer");
+const { sendMail } = require("../utils/mailer");
+const { getAutoReplyTemplate } = require("../utils/autoReplyTemplate");
 
 async function createContactMessage(req, res) {
   try {
@@ -19,18 +20,35 @@ async function createContactMessage(req, res) {
       [name, email, phone, subject, message]
     );
 
-    // 2️⃣ Send Gmail notification
-    await sendContactNotification({
-      name,
-      email,
-      phone,
-      subject,
-      message
+    // 2️⃣ Email to YOU (Admin)
+    await sendMail({
+      from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
+      to: process.env.GMAIL_USER,
+      subject: `📩 New Contact Message: ${subject}`,
+      html: `
+        <h3>New Contact Message</h3>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Phone:</b> ${phone || "N/A"}</p>
+        <p><b>Subject:</b> ${subject}</p>
+        <p><b>Message:</b></p>
+        <p>${message}</p>
+      `
+    });
+
+    // 3️⃣ AUTO-REPLY TO USER
+    const autoReply = getAutoReplyTemplate({ name, subject, message });
+
+    await sendMail({
+      from: `"Yuvraj Singh" <${process.env.GMAIL_USER}>`,
+      to: email,
+      subject: autoReply.subject,
+      html: autoReply.html
     });
 
     return res.json({
       success: true,
-      message: "Message stored and email notification sent"
+      message: "Message sent successfully"
     });
 
   } catch (error) {
