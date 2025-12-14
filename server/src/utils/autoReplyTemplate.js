@@ -23,7 +23,7 @@ const getAutoReplyTemplate = ({ name, subject, message }) => {
 
         <p>
           I am currently reviewing your message and will get back to you
-          with a detailed response within <strong>24 hours</strong>.
+          with a detailed response within <strong>3 hours</strong>.
         </p>
 
         <p>
@@ -37,8 +37,8 @@ const getAutoReplyTemplate = ({ name, subject, message }) => {
         <p>
           <strong>Yuvraj Singh</strong><br/>
           Full Stack Developer<br/>
-          📧 singhyuvraj8420@gmail.com<br/>
-          📍 Noida, India
+           singhyuvraj8420@gmail.com<br/>
+           Noida, India
         </p>
 
         <hr style="margin-top:30px;" />
