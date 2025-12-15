@@ -3,7 +3,7 @@ const createContactMessage = require("../../api/contact");
 
 const router = express.Router();
 
-// POST /api/contact
+// 👉 POST /api/contact
 router.post("/", createContactMessage);
 
 module.exports = router;

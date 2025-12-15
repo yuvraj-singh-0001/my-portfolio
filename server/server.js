@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
-const routes = require("./src/routes/routes");
+const routes = require("./src/routes/Routes");
 
 const app = express();
 
@@ -17,8 +17,13 @@ app.use(cors({
 
 app.use(express.json());
 
-// ✅ MAIN ROUTE
+// ✅ API ROUTES
 app.use("/api", routes);
+
+// ✅ HEALTH CHECK (IMPORTANT FOR RENDER)
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
 
 // 404
 app.use((req, res) => {
