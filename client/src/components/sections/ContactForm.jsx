@@ -65,13 +65,17 @@ const ContactForm = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5100/api/contact/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
+      const response = await fetch(
+        "https://my-portfolio-7bnk.onrender.com/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        }
+      );
+
 
       const data = await response.json();
 
@@ -139,7 +143,7 @@ const ContactForm = () => {
 
         {/* Main Content Grid - Mobile: Form first, Contact info below */}
         <div className="grid md:grid-cols-3 gap-4 md:gap-6">
-          
+
           {/* Form Section - Desktop: Left, Mobile: First */}
           <div className="md:col-span-2 p-4 md:p-6 rounded-xl border border-gray-800 bg-gray-900/30 order-1">
             <h3 className="text-lg font-semibold mb-4 md:mb-6">Send me a message</h3>
@@ -242,8 +246,8 @@ const ContactForm = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className={`w-full py-2.5 md:py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300 text-sm ${isSubmitting
-                    ? 'bg-gray-700 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-accent to-neon hover:opacity-90'
+                  ? 'bg-gray-700 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-accent to-neon hover:opacity-90'
                   }`}
               >
                 {isSubmitting ? (
@@ -278,8 +282,8 @@ const ContactForm = () => {
                 >
                   <div className="flex items-center gap-2.5 md:gap-3 mb-1.5 md:mb-2">
                     <div className={`p-1.5 md:p-2 rounded-lg bg-gray-800/50 ${info.color}`}>
-                      {React.cloneElement(info.icon, { 
-                        className: "w-4 h-4 md:w-5 md:h-5" 
+                      {React.cloneElement(info.icon, {
+                        className: "w-4 h-4 md:w-5 md:h-5"
                       })}
                     </div>
                     <h3 className="font-semibold text-sm md:text-base">{info.title}</h3>
