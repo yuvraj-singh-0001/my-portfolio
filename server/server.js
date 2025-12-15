@@ -6,11 +6,6 @@ const contactRoutes = require("./src/routes/Routes");
 
 const app = express();
 
-/* ===============================
-   Middleware
-================================ */
-
-// ✅ CORS FIX (IMPORTANT)
 app.use(cors({
   origin: [
     "http://localhost:4100",
@@ -22,26 +17,16 @@ app.use(cors({
 
 app.use(express.json());
 
-/* ===============================
-   Routes
-================================ */
-
+// ✅ ROUTES
 app.use("/api", contactRoutes);
 
-/* ===============================
-   404
-================================ */
-
+// 404
 app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: "Route not found"
   });
 });
-
-/* ===============================
-   Start Server
-================================ */
 
 const PORT = process.env.PORT || 5100;
 app.listen(PORT, () => {
