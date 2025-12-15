@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
-const contactRoutes = require("./src/routes/Routes");
+const routes = require("./src/routes/Routes");
 
 const app = express();
 
@@ -17,8 +17,8 @@ app.use(cors({
 
 app.use(express.json());
 
-// ✅ ROUTES
-app.use("/api", contactRoutes);
+// ✅ MAIN ROUTE
+app.use("/api", routes);
 
 // 404
 app.use((req, res) => {
