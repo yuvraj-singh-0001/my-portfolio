@@ -12,7 +12,10 @@ const app = express();
 
 // ✅ CORS FIX (IMPORTANT)
 app.use(cors({
-  origin: "http://localhost:4100",
+  origin: [
+    "http://localhost:4100",
+    "https://webyuvraj.vercel.app"
+  ],
   methods: ["GET", "POST"],
   credentials: true
 }));
