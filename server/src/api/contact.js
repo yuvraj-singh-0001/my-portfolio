@@ -20,38 +20,38 @@ async function createContactMessage(req, res) {
       [name, email, phone, subject, message]
     );
 
-    // 2️⃣ Email to YOU (Admin)
-    await sendMail({
-      from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
-      subject: `📩 New Contact Message: ${subject}`,
-      html: `
-        <h3>New Contact Message</h3>
-        <p><b>Name:</b> ${name}</p>
-        <p><b>Email:</b> ${email}</p>
-        <p><b>Phone:</b> ${phone || "N/A"}</p>
-        <p><b>Subject:</b> ${subject}</p>
-        <p><b>Message:</b></p>
-        <p>${message}</p>
-      `
-    });
+    // // 2️⃣ Email to YOU (Admin)
+    // await sendMail({
+    //   from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
+    //   to: process.env.GMAIL_USER,
+    //   subject: `📩 New Contact Message: ${subject}`,
+    //   html: `
+    //     <h3>New Contact Message</h3>
+    //     <p><b>Name:</b> ${name}</p>
+    //     <p><b>Email:</b> ${email}</p>
+    //     <p><b>Phone:</b> ${phone || "N/A"}</p>
+    //     <p><b>Subject:</b> ${subject}</p>
+    //     <p><b>Message:</b></p>
+    //     <p>${message}</p>
+    //   `
+    // });
 
 
-    // 3️⃣ AUTO-REPLY TO USER (IMMEDIATE – RECOMMENDED)
-    const autoReply = getAutoReplyTemplate({ name, subject, message });
+    // // 3️⃣ AUTO-REPLY TO USER (IMMEDIATE – RECOMMENDED)
+    // const autoReply = getAutoReplyTemplate({ name, subject, message });
 
-    try {
-      await sendMail({
-        from: `"Yuvraj Singh" <${process.env.GMAIL_USER}>`,
-        to: email,
-        subject: autoReply.subject,
-        html: autoReply.html
-      });
+    // try {
+    //   await sendMail({
+    //     from: `"Yuvraj Singh" <${process.env.GMAIL_USER}>`,
+    //     to: email,
+    //     subject: autoReply.subject,
+    //     html: autoReply.html
+    //   });
 
-      console.log(`Auto-reply sent to ${email}`);
-    } catch (err) {
-      console.error("Auto-reply email failed:", err);
-    }
+    //   console.log(`Auto-reply sent to ${email}`);
+    // } catch (err) {
+    //   console.error("Auto-reply email failed:", err);
+    // }
 
 
     return res.json({
