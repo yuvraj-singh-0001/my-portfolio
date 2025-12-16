@@ -10,6 +10,7 @@ import {
   Loader2,
   MapPin
 } from "lucide-react";
+const API_BASE_URL = "https://my-portfolio-f6s2.onrender.com";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -65,15 +66,13 @@ const ContactForm = () => {
     setError("");
 
     try {
-      fetch("https://my-portfolio-7bnk.onrender.com/api/contact", {
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(formData)
       });
-
-
 
       const data = await response.json();
 
@@ -98,6 +97,7 @@ const ContactForm = () => {
       setIsSubmitting(false);
     }
   };
+
 
   return (
     <section id="contact" className="py-8 md:py-2 relative">

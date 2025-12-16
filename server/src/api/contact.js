@@ -37,23 +37,21 @@ async function createContactMessage(req, res) {
     });
 
 
-    // 3️⃣ AUTO-REPLY TO USER (AFTER 1 MINUTE)
+    // 3️⃣ AUTO-REPLY TO USER (IMMEDIATE – RECOMMENDED)
     const autoReply = getAutoReplyTemplate({ name, subject, message });
 
-    setTimeout(async () => {
-      try {
-        await sendMail({
-          from: `"Yuvraj Singh" <${process.env.GMAIL_USER}>`,
-          to: email,
-          subject: autoReply.subject,
-          html: autoReply.html
-        });
+    try {
+      await sendMail({
+        from: `"Yuvraj Singh" <${process.env.GMAIL_USER}>`,
+        to: email,
+        subject: autoReply.subject,
+        html: autoReply.html
+      });
 
-        console.log(`Auto-reply sent to ${email}`);
-      } catch (err) {
-        console.error("Auto-reply email failed:", err);
-      }
-    }, 60 * 1000); // ⏱️ 1 minute delay
+      console.log(`Auto-reply sent to ${email}`);
+    } catch (err) {
+      console.error("Auto-reply email failed:", err);
+    }
 
 
     return res.json({
