@@ -23,7 +23,7 @@ const getAutoReplyTemplate = ({ name, subject, message }) => {
 
         <p>
           I am currently reviewing your message and will get back to you
-          with a detailed response within <strong>3 hours</strong>.
+          with a detailed response within <strong>Some hours</strong>.
         </p>
 
         <p>
