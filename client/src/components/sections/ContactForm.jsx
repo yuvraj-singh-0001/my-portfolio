@@ -10,7 +10,8 @@ import {
   Loader2,
   MapPin
 } from "lucide-react";
-const API_BASE_URL = "http://localhost:5100";
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
