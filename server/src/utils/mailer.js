@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-const sendMail = async (options) => {
-  await transporter.sendMail(options);
+const sendMail = (options) => {
+  return transporter.sendMail(options);
 };
 
 module.exports = { sendMail };
