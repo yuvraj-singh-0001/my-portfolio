@@ -10,7 +10,7 @@ import {
   Loader2,
   MapPin
 } from "lucide-react";
-const API_BASE_URL = "https://my-portfolio-f6s2.onrender.com";
+const API_BASE_URL = "http://localhost:5100";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
