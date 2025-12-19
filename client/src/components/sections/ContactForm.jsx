@@ -236,7 +236,7 @@ const ContactForm = () => {
                   required
                   rows="4"
                   className="w-full px-3 py-2 md:py-2.5 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon transition-all duration-300 resize-none placeholder-gray-500 text-sm"
-                  placeholder="Tell me about project and job requirements..."
+                  placeholder="Tell me about your project and job requirements..."
                 ></textarea>
               </div>
 

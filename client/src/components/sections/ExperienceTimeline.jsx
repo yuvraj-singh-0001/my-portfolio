@@ -16,7 +16,7 @@ const ExperienceTimeline = () => {
       company: 'Self-Employed',
       period: '2025 - Present',
       description: 'Building custom websites and web applications for clients. Focusing on performance, SEO, and user experience.',
-      skills: ['JavaScript', 'React', 'C++  ', 'python ', 'UI/UX'],
+      skills: ['JavaScript', 'React', 'C++  ', 'Python ', 'UI/UX'],
       link: null
     }
   ];

@@ -202,7 +202,7 @@ const Hero = () => {
                           <p className="text-gray-300 text-sm sm:text-base">
                             I'm{' '}
                             <span className="text-neon-500 font-semibold">
-                              {displayText || "Full Stack Developer"}
+                              {displayText || "a Full Stack Developer"}
                             </span>
                           </p>
                         </div>
